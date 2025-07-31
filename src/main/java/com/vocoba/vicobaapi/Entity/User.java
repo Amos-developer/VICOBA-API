@@ -1,20 +1,17 @@
 package com.vocoba.vicobaapi.Entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import javax.management.relation.Role;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
+@Table(name = "users")
 @Data
-@Table(name="users")
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
 
     @Id
@@ -27,14 +24,24 @@ public class User {
     private String email;
 
     private String password;
+
+    @Column(unique = true)
     private String phone;
 
     @Enumerated(EnumType.STRING)
     private Role role;
 
-    private LocalDateTime createdAt = LocalDateTime.now();
-    public enum Role {
-        MEMBER, ADMIN
-    }
+    private LocalDateTime createdAt;
 
+     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+     private Wallet wallet;
+
+     @ManyToOne
+     @JoinColumn(name = "group_id")
+     private Group group;
+
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = LocalDateTime.now();
+    }
 }
