@@ -8,6 +8,5 @@ public interface LoanService {
     Loan applyLoan(Loan loan);
     List<Loan> getAllLoans();
     Loan getLoanById(Long id);
-    void deleteLoan(Long id);
-
+    void removeLoan(Long id);
 }

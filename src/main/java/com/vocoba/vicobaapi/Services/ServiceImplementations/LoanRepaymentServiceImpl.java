@@ -15,24 +15,26 @@ public class LoanRepaymentServiceImpl implements LoanRepaymentService {
     @Autowired
     private LoanRepaymentRRepository loanRepaymentRRepository;
 
-
     @Override
     public LoanRepayment repayLoan(LoanRepayment repayment) {
-        return null;
+        return loanRepaymentRRepository.save(repayment);
     }
 
     @Override
     public List<LoanRepayment> getAllRepayments() {
-        return null;
+        return loanRepaymentRRepository.findAll();
     }
 
     @Override
     public LoanRepayment getRepaymentById(Long id) {
-        return null;
+
+        return loanRepaymentRRepository.findById(id).orElseThrow(
+                ()->new RuntimeException("No Loan Repayment found...")
+        );
     }
 
     @Override
     public void deleteRepayment(Long id) {
-
+        loanRepaymentRRepository.deleteById(id);
     }
 }

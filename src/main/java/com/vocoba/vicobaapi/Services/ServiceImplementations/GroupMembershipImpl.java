@@ -1,5 +1,6 @@
 package com.vocoba.vicobaapi.Services.ServiceImplementations;
 
+import com.vocoba.vicobaapi.Entity.GroupMembership;
 import com.vocoba.vicobaapi.Repository.GroupMembershipRepository;
 import com.vocoba.vicobaapi.Services.GroupMembershipService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,17 +15,17 @@ public class GroupMembershipImpl implements GroupMembershipService {
     private GroupMembershipRepository groupMembershipRepository;
 
     @Override
-    public GroupMembershipRepository addMeMemberToGroup(GroupMembershipRepository membership) {
+    public GroupMembership addMemberToGroup(GroupMembership membership) {
         return groupMembershipRepository.save(membership);
     }
 
     @Override
-    public List<GroupMembershipRepository> getAllMembership() {
+    public List<GroupMembership> getAllMembership() {
         return groupMembershipRepository.findAll();
     }
 
     @Override
-    public GroupMembershipRepository getMembershipById(Long id) {
+    public GroupMembership getMembershipById(Long id) {
         return groupMembershipRepository.findById(id).orElseThrow(
                 ()-> new RuntimeException("No membership found...")
         );
