@@ -1,13 +1,13 @@
 package com.vocoba.vicobaapi.Services;
 
-import com.vocoba.vicobaapi.Repository.GroupMembership;
+import com.vocoba.vicobaapi.Repository.GroupMembershipRepository;
 
 import java.util.List;
 
 public interface GroupMembershipService {
-    GroupMembership addMeMemberToGroup(GroupMembership membership);
-    List<GroupMembership> getAllMembership();
-    GroupMembership getMembershipById(Long id);
+    GroupMembershipRepository addMeMemberToGroup(GroupMembershipRepository membership);
+    List<GroupMembershipRepository> getAllMembership();
+    GroupMembershipRepository getMembershipById(Long id);
     void removeMembership(Long id);
 
 }
