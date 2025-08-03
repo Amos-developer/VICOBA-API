@@ -1,16 +1,10 @@
 package com.vocoba.vicobaapi.Entity;
 
 import jakarta.persistence.*;
-import lombok.*;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @Table(name = "transactions")
 public class Transaction {
 
@@ -18,7 +12,6 @@ public class Transaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Many transactions can belong to one wallet
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "wallet_id", nullable = false)
     private Wallet wallet;
@@ -40,5 +33,67 @@ public class Transaction {
         WITHDRAW,
         LOAN,
         REPAYMENT
+    }
+
+    // Default constructor
+    public Transaction() {}
+
+    // All-args constructor
+    public Transaction(Long id, Wallet wallet, Type type, BigDecimal amount, String description, LocalDateTime createdAt) {
+        this.id = id;
+        this.wallet = wallet;
+        this.type = type;
+        this.amount = amount;
+        this.description = description;
+        this.createdAt = createdAt;
+    }
+
+    // Getters and Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Wallet getWallet() {
+        return wallet;
+    }
+
+    public void setWallet(Wallet wallet) {
+        this.wallet = wallet;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
     }
 }

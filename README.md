@@ -11,7 +11,7 @@ A backend system for managing users, groups, and memberships in a Vicoba model (
 ## Tech Stack
 - Java 17
 - Spring Boot
-- MySQL
+- PostgreSQL
 - Lombok
 - JPA/Hibernate
 
