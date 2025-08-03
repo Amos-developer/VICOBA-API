@@ -1,6 +1,6 @@
 # Vicoba API
 
-A backend system for managing users, groups, and memberships in a Vicoba model (community savings group). Built with Spring Boot and MySQL.
+A backend system for managing users, groups, and memberships in a Vicoba model (community savings group). Built with Spring Boot and PostgreSQL.
 
 ## Features
 - User & Group Management
